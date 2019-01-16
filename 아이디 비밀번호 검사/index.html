@@ -9,8 +9,8 @@
 <body>
   <div class="login-form">
     <form>
-      <input type="text" name="email" id="email-input" class="text-field" placeholder="아이디"><br>
-      <input type="password" name="password" id="password-input" class="text-field" placeholder="비밀번호"><br>
+      <input type="text" name="email" id="email-input" class="text-field" placeholder="아이디" oninput="fillEmail()"><br>
+      <input type="password" name="password" id="password-input" class="text-field" placeholder="비밀번호" oninput="fillPW()"><br>
       <input type="submit" value="로그인" id="submit-btn">
     </form>
 
@@ -24,25 +24,24 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   <script>
-    $('#email-input').on('input', activeButton);
-    $('#password-input').on('input', activeButton);
-
-    function activeButton() {
-      var email = $('email-input').val()
-      var password = $('password-input').val()
-      if(email != "" && password != "") {//null로도 해보고 ''로도 해보자!!
-        $('#submit-btn').css('background', '#1BBC9B');
-      }
-      else {
+    function fillEmail() {
+      if ($('#password-input').val() == '') {
         $('#submit-btn').css('background', '#9B9B9B');
       }
+      else {
+        $('#submit-btn').css('background', '#1BBC9B');
+      }
     }
+
+    function fillPW() {
+      if ($('#email-input').val() == '') {
+        $('#submit-btn').css('background', '#9B9B9B');
+      }
+      else {
+        $('#submit-btn').css('background', '#1BBC9B');
+      }
+    }
+
   </script>
 </body>
 </html>
-
-<!-- 
-  문제 조건 
-  1. 아이디 혹은 비밀번호 둘 중 하나라도 입력란이 비어있다면, 로그인 버튼이 '비활성화'되어서 버튼의 배경색이 #9B9B9B로 설정되어야 합니다.
-  2. 사용자가 아이디와 비밀번호를 둘 다 입력하면, 로그인 버튼이 '활성화'되어서 버튼의 배경색이 #1BBC9B로 바뀌어야 합니다.
--->
